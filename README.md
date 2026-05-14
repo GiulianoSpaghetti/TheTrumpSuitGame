@@ -83,10 +83,9 @@ Basta prendere l'msix che più piace dalle release su github, che sono controlla
 
 Prerequisiti: 
 
-https://winstall.app/apps/Microsoft.DotNet.DesktopRuntime.10
-
-Oppure 9 o o 8 a seconda di quello che scegliete.
-E' consigliabile avere l'appruntime 2.0-experimental4 installato sul computer (https://learn.microsoft.com/it-it/windows/apps/windows-app-sdk/downloads), anche se si utilizza il desktop runtime 9 o 10. Tutto da provare...
+    unigetui://DesktopRuntime
+    
+installare il windows desktopruntime 10 oppure 9 o o 8 a seconda di quello che scegliete.
 
 ## Aggiornamenti
 
