@@ -36,8 +36,8 @@ jobs:
 
     - name: Decode PFX certificate
       run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCODED_PFX }}")
-        [IO.File]::WriteAllBytes("TrumpSuitGame/signing.pfx", $pfx_cert_byte)
+        $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10)
+        Export-PfxCertificate -Cert $cert -FilePath "signing.pfx" -Password (${{ secrets.PFX_KEY }})
       shell: pwsh
 
     - name: Build MAUI MSIX
