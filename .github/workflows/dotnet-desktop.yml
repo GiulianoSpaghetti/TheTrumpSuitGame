@@ -47,7 +47,6 @@ jobs:
           -f net10.0-windows10.0.26100.0 `
           -c $env:Configuration `
           -p:AppxPackageSigningEnabled=true `
-          -p:PackageCertificateKeyFile="${{ github.workspace }}/TrumpSuitGame/signing.pfx" `
           -p:PackageCertificatePassword="Giu3li2@1"
       shell: pwsh
 
