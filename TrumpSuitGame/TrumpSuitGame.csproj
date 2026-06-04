@@ -35,8 +35,8 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
-		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-		<GenerateTemporaryStoreCertificate>false</GenerateTemporaryStoreCertificate>
+        <PackageCertificateKeyFile>signing.pfx</PackageCertificateKeyFile>
+        <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 		<!-- Remove the thumbprint line -->
 	</PropertyGroup>
 
