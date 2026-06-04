@@ -37,13 +37,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 		<GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
-		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-		<GenerateTestArtifacts>True</GenerateTestArtifacts>
-		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<PackageCertificateThumbprint>4AA67A4BBD94B31875625FCFB408508B40325E36</PackageCertificateThumbprint>
+		<!-- Remove the thumbprint line -->
 	</PropertyGroup>
 
 	<ItemGroup>
