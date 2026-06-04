@@ -36,27 +36,19 @@ jobs:
 
     - name: Create PFX certificate
       run: |
-        $pfx_password = ConvertTo-SecureString -String 'Giu3li2@1' -AsPlainText -Force
-        $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCODED_PFX }}")
+        $pfx_password = "${{ secrets.BASE64_ENCODED_PFX }}"
+        $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.PFX_KEY }}")
         $pfxPath = Join-Path $env:RUNNER_TEMP "signing.pfx"
         [System.IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
         Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pfx_Password
         Write-Host "Certificate safely imported to store."
-#        $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10) -CertStoreLocation "Cert:\CurrentUser\My"
-#        Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password -Force
       shell: pwsh
 
     - name: Build MAUI MSIX
       run: |
         dotnet publish TrumpSuitGame/TrumpSuitGame.csproj `
           -f net10.0-windows10.0.26100.0 `
-          -c $env:Configuration `
-          -p:AppxPackageSigningEnabled=true `
-          -p:PackageCertificatePassword="Giu3li2@1"
-      shell: pwsh
-
-    - name: Clean up certificate
-      run: Remove-Item -Path "TrumpSuitGame/signing.pfx" -Force
+          -c $env:Configuration
       shell: pwsh
 
     - name: Upload MSIX artifact
