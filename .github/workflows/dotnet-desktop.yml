@@ -58,8 +58,8 @@ jobs:
     env:
       Solution_Name: TrumpSuitGame.slnx                       # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: TheTrumpSuitGame                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: TheTrumpSuitGame    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: TheTrumpSuitGame\TheTrumpSuitGame                  # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Wap_Project_Directory: TrumpSuitGame    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
+      Wap_Project_Path: TrumpSuitGame                  # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout
@@ -89,11 +89,7 @@ jobs:
     # Decode the base 64 encoded pfx and save the Signing_Certificate
     - name: Decode the pfx
       run: |
-        $dir = "${{ env.Wap_Project_Directory }}"
-          if (-not (Test-Path $dir)) {
-            New-Item -ItemType Directory -Path $dir -Force | Out-Null
-          }
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
+        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCXODED_PFX }}")
         $certificatePath = Join-Path -Path $env:Wap_Project_Directory -ChildPath GitHubActionsWorkflow.pfx
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
@@ -104,8 +100,8 @@ jobs:
         /p:Configuration=$env:Configuration `
         /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode `
         /p:AppxBundle=$env:Appx_Bundle `
-        /p:PackageCertificateKeyFile=$env:Wap_Project_Directory\GitHubActionsWorkflow.pfx `
-        /p:PackageCertificatePassword="${{ secrets.Pfx_Key }}" `
+        /p:PackageCertificateKeyFile="GitHubActionsWorkflow.pfx" `
+        /p:PackageCertificatePassword="${{ secrets.PFX_KEY }}" `
       env:
         Appx_Bundle: never
         Appx_Bundle_Platforms: x64
