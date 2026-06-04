@@ -51,8 +51,6 @@
             </Picker>
             <Label x:Name="lblMazzi" Grid.Row="5" Grid.Column="0" Text="Livello" />
             <Picker x:Name="pkrmazzi" Title="" Grid.Row="5" Grid.Column="1">
-                    <x:Array Type="{x:Type x:String}" x:Name="amazzi">
-                    </x:Array>
             </Picker>
 
             <Switch x:Name="swCartaBriscola" Grid.Row="6" Grid.Column="1" />
