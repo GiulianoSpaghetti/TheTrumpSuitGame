@@ -28,21 +28,21 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
-    - name: Install MAUI Workload
-      run: dotnet workload install maui
-
-    - name: Restore packages
-      run: dotnet restore TrumpSuitGame.slnx
-
-    - name: Create PFX certificate
+    - name: Import PFX certificate
       run: |
         $pfx_password = ConvertTo-SecureString "${{ secrets.PFX_KEY }}" -AsPlainText -Force
-        $pfxBytes = [System.Convert]::FromBase64String(${{ secrets.BASE64_ENCODED_PFX }}")
+        $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCODED_PFX }}")
         $pfxPath = Join-Path $env:RUNNER_TEMP "signing.pfx"
         [System.IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
         Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pfx_Password
         Write-Host "Certificate safely imported to store."
       shell: pwsh
+
+    - name: Install MAUI Workload
+      run: dotnet workload install maui
+
+    - name: Restore packages
+      run: dotnet restore TrumpSuitGame.slnx
 
     - name: Build MAUI MSIX
       run: |
