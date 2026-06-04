@@ -111,6 +111,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX Package
-        path: ${{ github.workspace }}\/${{ env.Wap_Project_Directory }}\bin\Release\net10.0-windows10.0.26100.0\win-x64\AppXPackage
+        path: ${{ github.workspace }}\/${{ env.Wap_Project_Directory }}\AppXPackage
         include-hidden-files: true
         if-no-files-found: error
