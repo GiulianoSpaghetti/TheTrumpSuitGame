@@ -111,6 +111,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX Package
-        path: ${{ github.workspace }}\/${{ env.Wap_Project_Directory }}\AppXPackage
+        path: "${{ env.Wap_Project_Path }}/AppPackages"
         include-hidden-files: true
         if-no-files-found: error
