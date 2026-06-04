@@ -95,11 +95,11 @@ jobs:
 
     # Create the app package by building and packaging the Windows Application Packaging project
     - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile= $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=$env:Wap_Project_Directory\GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
       env:
         Appx_Bundle: never
         Appx_Bundle_Platforms: x64
-        Appx_Package_Build_Mode: StoreUpload
+        Appx_Package_Build_Mode: Sideload
         Configuration: ${{ matrix.configuration }}
 
     # Remove the pfx
@@ -111,6 +111,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX Package
-        path: ${{ github.workspace }}TrumpSuitGame\bin\Release\net10.0-windows10.0.26100.0\win-x64\Upload
+        path: $env:Wap_Project_Directory\bin\Release\net10.0-windows10.0.26100.0\win-x64\AppXPackage
         include-hidden-files: true
         if-no-files-found: error
