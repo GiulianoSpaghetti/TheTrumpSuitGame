@@ -37,8 +37,9 @@ jobs:
     - name: Decode PFX certificate
       run: |
         $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10)
-        Export-PfxCertificate -Cert $cert -FilePath "signing.pfx" -Password (${{ secrets.PFX_KEY }})
-      shell: pwsh
+        $password = ConvertTo-SecureString -String "${{ secrets.PFX_KEY }}" -AsPlainText -Force
+        Export-PfxCertificate -Cert $cert -FilePath "signing.pfx" -Password $password
+      shell: pwsh      shell: pwsh
 
     - name: Build MAUI MSIX
       run: |
@@ -47,7 +48,7 @@ jobs:
           -c $env:Configuration `
           -p:AppxPackageSigningEnabled=true `
           -p:PackageCertificateKeyFile="${{ github.workspace }}/TrumpSuitGame/signing.pfx" `
-          -p:PackageCertificatePassword="${{ secrets.PFX_KEY }}"
+          -p:PackageCertificatePassword=ConvertTo-SecureString -String "${{ secrets.PFX_KEY }}" -AsPlainText -Force
       shell: pwsh
 
     - name: Clean up certificate
