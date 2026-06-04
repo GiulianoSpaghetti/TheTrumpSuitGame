@@ -36,7 +36,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</TargetPlatformMinVersion>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-		<GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
+		<GenerateTemporaryStoreCertificate>false</GenerateTemporaryStoreCertificate>
 		<!-- Remove the thumbprint line -->
 	</PropertyGroup>
 
@@ -70,19 +70,6 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.8" />
 		<PackageReference Include="CardFramework.Maui" Version="1.6.14" />
 	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0-windows10.0.26100.0'">
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.1-RTM" />
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX" Version="1.7.251221100">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="2.0.0-experimental4" />
-	</ItemGroup>
-
-
-
-
 </Project>
 
 
