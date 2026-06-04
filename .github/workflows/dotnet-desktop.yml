@@ -40,7 +40,7 @@ jobs:
         $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCODED_PFX }}")
         $pfxPath = Join-Path $env:RUNNER_TEMP "signing.pfx"
         [System.IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
-        Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pfxPassword
+        Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pfx_Password
         Write-Host "Certificate safely imported to store."
 #        $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10) -CertStoreLocation "Cert:\CurrentUser\My"
 #        Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password -Force
