@@ -36,14 +36,14 @@ jobs:
 
     - name: Create PFX certificate
       run: |
+        $password = "Giu3li2@1"
         $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10)
-        $password = ConvertTo-SecureString -String "${{ secrets.PFX_KEY }}" -AsPlainText -Force
         Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password
       shell: pwsh
 
     - name: Build MAUI MSIX
       run: |
-        $password = ConvertTo-SecureString -String "${{ secrets.PFX_KEY }}" -AsPlainText -Force
+        $password = "Giu3li2@1"
         dotnet publish TrumpSuitGame/TrumpSuitGame.csproj `
           -f net10.0-windows10.0.26100.0 `
           -c $env:Configuration `
