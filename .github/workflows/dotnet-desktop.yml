@@ -111,6 +111,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+        path: ${{ github.workspace }}/TrumpSuitGame/AppPackages/
         include-hidden-files: true
         if-no-files-found: error
