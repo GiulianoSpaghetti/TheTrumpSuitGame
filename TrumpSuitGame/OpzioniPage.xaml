@@ -44,19 +44,15 @@
             <Label x:Name="lbLivello" Grid.Row="4" Grid.Column="0" Text="Livello" />
             <Picker x:Name="pkrlivello" Title="" Grid.Row="4" Grid.Column="1">
                 <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
                         <x:String>1</x:String>
                         <x:String>2</x:String>
                         <x:String>3</x:String>
-                    </x:Array>
                 </Picker.ItemsSource>
             </Picker>
             <Label x:Name="lblMazzi" Grid.Row="5" Grid.Column="0" Text="Livello" />
             <Picker x:Name="pkrmazzi" Title="" Grid.Row="5" Grid.Column="1">
-                <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}" x:Name="amazzi">
                     </x:Array>
-                </Picker.ItemsSource>
             </Picker>
 
             <Switch x:Name="swCartaBriscola" Grid.Row="6" Grid.Column="1" />
