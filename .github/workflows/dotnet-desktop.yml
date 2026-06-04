@@ -38,7 +38,7 @@ jobs:
       run: |
         $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10)
         $password = ConvertTo-SecureString -String "${{ secrets.PFX_KEY }}" -AsPlainText -Force
-        Export-PfxCertificate -Cert $cert -FilePath "signing.pfx" -Password $password
+        Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password
       shell: pwsh
 
     - name: Build MAUI MSIX
