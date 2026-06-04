@@ -36,9 +36,9 @@ jobs:
 
     - name: Create PFX certificate
       run: |
-        $password = ConvertTo-SecureString -String "Giu3li2@1" -AsPlainText -Force
-        $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10)
-        Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password
+        $password = ConvertTo-SecureString -String 'Giu3li2@1' -AsPlainText -Force
+        $cert = New-SelfSignedCertificate -Type CodeSigningCert -DnsName "TheTrumpSuitGame" -FriendlyName "Trump Suite Game Dev" -NotAfter (Get-Date).AddYears(10) -CertStoreLocation "Cert:\CurrentUser\My"
+        Export-PfxCertificate -Cert $cert -FilePath "${{ github.workspace }}/TrumpSuitGame/signing.pfx" -Password $password -Force
       shell: pwsh
 
     - name: Build MAUI MSIX
