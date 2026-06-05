@@ -15,7 +15,7 @@ public partial class OpzioniPage : ContentPage
     public OpzioniPage()
     {
         InitializeComponent();
-        livello = (UInt16)Preferences.Get("livello", 3);
+       /* livello = (UInt16)Preferences.Get("livello", 3);
         txtNomeUtente.Text = Preferences.Get("nomeUtente", "numerone");
         txtCpu.Text = Preferences.Get("nomeCpu", "numerona");
         secondi = (UInt16)Preferences.Get("secondi", 5);
@@ -84,7 +84,7 @@ public partial class OpzioniPage : ContentPage
         {
         }
         pkrmazzi.ItemsSource = _mazzi;
-        pkrmazzi.SelectedItem = Preferences.Get("mazzo", "Napoletano");
+        pkrmazzi.SelectedItem = Preferences.Get("mazzo", "Napoletano");*/
 
     }
 	
