@@ -34,41 +34,62 @@ public partial class OpzioniPage : ContentPage
         lbAvvisaTallone.Text= $"{App.Dictionary["AvvisaTallone"]}";
         btnOk.Text= $"{App.Dictionary["Salva"]}";
         lblMazzi.Text = $"{App.Dictionary["MazzoAlternativo"]}";
-        ObservableCollection<string> _mazzi = new ObservableCollection<string>();
         try
         {
             s=FileSystem.OpenAppPackageFileAsync("Mazzi\\Gatti\\0.png").Result;
-            _mazzi.Add("Gatti");
+            pkrmazzi.Add("Gatti");
             s.Close();
         }
         catch (AggregateException ex)
         {
          
         }
-        _mazzi.Add("Napoletano");
+		catch (FileNotFoundException ex)
+		{
+
+		}
+		catch (DirectoryNotFoundException ex)
+		{
+		
+		}
+        pkrmazzi.Add("Napoletano");
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Siciliano\\0.png").Result;
-            _mazzi.Add("Siciliano");
+            pkrmazzi.Add("Siciliano");
             s.Close();
         }
         catch (AggregateException ex)
         {
 
         }
+		catch (FileNotFoundException ex)
+		{
+
+		}
+		catch (DirectoryNotFoundException ex)
+		{
+		
+		}
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Trevigiano\\0.png").Result;
-            _mazzi.Add("Trevigiano");
+            pkrmazzi.Add("Trevigiano");
             s.Close();
         }
         catch (AggregateException ex)
         {
 
         }
-        pkrmazzi.ItemsSource = _mazzi;
-        string mazzo = Preferences.Get("mazzo", "Napoletano");
-        pkrmazzi.SelectedItem = mazzo;
+		catch (FileNotFoundException ex)
+		{
+
+		}
+		catch (DirectoryNotFoundException ex)
+		{
+		
+		}
+        pkrmazzi.SelectedItem = = Preferences.Get("mazzo", "Napoletano");
 
     }
 
@@ -105,7 +126,7 @@ public partial class OpzioniPage : ContentPage
         secondi=sec;
         Preferences.Set("secondi", secondi);
         Preferences.Set("livello", pkrlivello.SelectedIndex + 1);
-        Preferences.Set("mazzo", pkrmazzi.SelectedItem==null?"Naèpoletano": pkrmazzi.SelectedItem.ToString());
+        Preferences.Set("mazzo", pkrmazzi.SelectedItem==null?"NaÃ¨poletano": pkrmazzi.SelectedItem.ToString());
 #if ANDROID
         AppShell.aggiorna = true;
 #else
