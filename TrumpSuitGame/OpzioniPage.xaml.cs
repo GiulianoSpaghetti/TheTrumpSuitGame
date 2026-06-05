@@ -34,66 +34,61 @@ public partial class OpzioniPage : ContentPage
         lbAvvisaTallone.Text= $"{App.Dictionary["AvvisaTallone"]}";
         btnOk.Text= $"{App.Dictionary["Salva"]}";
         lblMazzi.Text = $"{App.Dictionary["MazzoAlternativo"]}";
+        ObservableCollection<string> _mazzi = new ObservableCollection<string>();
         try
         {
             s=FileSystem.OpenAppPackageFileAsync("Mazzi\\Gatti\\0.png").Result;
-            pkrmazzi.Items.Add("Gatti");
+            _mazzi.Add("Gatti");
             s.Close();
         }
         catch (AggregateException ex)
         {
          
         }
-		catch (FileNotFoundException ex)
-		{
-
-		}
-		catch (DirectoryNotFoundException ex)
-		{
-		
-		}
-        pkrmazzi.Items.Add("Napoletano");
+        catch (FileNotFoundException ex)
+        {
+        }
+        catch (DirectoryNotFoundException ex)
+        {
+        }
+        _mazzi.Add("Napoletano");
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Siciliano\\0.png").Result;
-            pkrmazzi.Items.Add("Siciliano");
+            _mazzi.Add("Siciliano");
             s.Close();
         }
         catch (AggregateException ex)
         {
 
         }
-		catch (FileNotFoundException ex)
-		{
-
-		}
-		catch (DirectoryNotFoundException ex)
-		{
-		
-		}
+        catch (FileNotFoundException ex)
+        {
+        }
+        catch (DirectoryNotFoundException ex)
+        {
+        }
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Trevigiano\\0.png").Result;
-            pkrmazzi.Items.Add("Trevigiano");
+            _mazzi.Add("Trevigiano");
             s.Close();
         }
         catch (AggregateException ex)
         {
-
         }
-		catch (FileNotFoundException ex)
-		{
-
-		}
-		catch (DirectoryNotFoundException ex)
-		{
-		
-		}
+        catch (FileNotFoundException ex)
+        {
+        }
+        catch (DirectoryNotFoundException ex)
+        {
+        }
+        pkrmazzi.ItemsSource = _mazzi;
         pkrmazzi.SelectedItem = Preferences.Get("mazzo", "Napoletano");
 
     }
-
-    public async void OnOk_Click(Object source, EventArgs evt)
+	
+	public async void OnOk_Click(Object source, EventArgs evt)
     {
 	UInt16 sec;
         Preferences.Set("nomeUtente", txtNomeUtente.Text);
