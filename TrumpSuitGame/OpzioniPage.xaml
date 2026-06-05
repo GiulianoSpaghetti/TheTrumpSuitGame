@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrumpSuitGame.OpzioniPage"
+             x:Class="TrumpSuitGameKnocked.OpzioniPage"
              Title="Options"
              Background="green">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-            </Style>
-            <Style TargetType="Entry">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-            </Style>
-            <Style TargetType="Picker">
-                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-            </Style>
-        </ResourceDictionary>
+                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                </Style>
+                <Style TargetType="Picker">
+                    <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+                </Style>
+            </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
@@ -24,7 +23,6 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
@@ -43,22 +41,20 @@
             <Entry x:Name="txtSecondi" Grid.Row="2" Grid.Column="1" Keyboard="Numeric" IsSpellCheckEnabled="False" />
             <Label x:Name="lbLivello" Grid.Row="4" Grid.Column="0" Text="Livello" />
             <Picker x:Name="pkrlivello" Title="" Grid.Row="4" Grid.Column="1">
-                <Picker.ItemsSource>
+                <Picker.Items>
                         <x:String>1</x:String>
                         <x:String>2</x:String>
                         <x:String>3</x:String>
-                </Picker.ItemsSource>
+                </Picker.Items>
             </Picker>
             <Label x:Name="lblMazzi" Grid.Row="5" Grid.Column="0" Text="Livello" />
             <Picker x:Name="pkrmazzi" Title="" Grid.Row="5" Grid.Column="1">
-                <Picker.ItemsSource>
-                </Picker.ItemsSource>
+                <Picker.Items></Picker.Items>
             </Picker>
-
             <Switch x:Name="swCartaBriscola" Grid.Row="6" Grid.Column="1" />
-            <Label x:Name="lbCartaBriscola" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="" />
+            <Label x:Name="lbCartaBriscola" Grid.Row="6" Grid.Column="0" Text="" Grid.ColumnSpan="2" />
             <Switch x:Name="swAvvisaTallone" Grid.Row="7" Grid.Column="1" />
-            <Label x:Name="lbAvvisaTallone" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="" />
+            <Label x:Name="lbAvvisaTallone" Grid.Row="7" Grid.Column="0" Text="" Grid.ColumnSpan="2" />
             <Button x:Name="btnOk" Text="" Clicked="OnOk_Click"  Grid.Row="8" Grid.Column="1" />
         </Grid>
     </ContentPage.Content>
