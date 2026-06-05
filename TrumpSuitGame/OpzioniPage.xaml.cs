@@ -89,7 +89,7 @@ public partial class OpzioniPage : ContentPage
 		{
 		
 		}
-        pkrmazzi.SelectedItem = = Preferences.Get("mazzo", "Napoletano");
+        pkrmazzi.SelectedItem = Preferences.Get("mazzo", "Napoletano");
 
     }
 
