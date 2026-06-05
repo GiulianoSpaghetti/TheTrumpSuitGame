@@ -10,7 +10,7 @@ public partial class InfoPage : ContentPage
 		InitializeComponent();
         Title = $"{App.Dictionary["Informazioni"]}";
         s = "";
-        TranslatorCredit.Text = $"Tranlsator: {App.Dictionary["Autore"]}";
+        TranslatorCredit.Text = $"Translator: {App.Dictionary["Autore"]}";
         if (App.Dictionary["Revisore"].ToString().Trim()!=">")
             RevisorCredit.Text = $"Revisor: {App.Dictionary["Revisore"]}";
     }
