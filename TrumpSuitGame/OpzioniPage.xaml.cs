@@ -52,7 +52,7 @@ public partial class OpzioniPage : ContentPage
 		{
 		
 		}
-        pkrmazzi.Add("Napoletano");
+        pkrmazzi.Items.Add("Napoletano");
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Siciliano\\0.png").Result;
