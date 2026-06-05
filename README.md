@@ -16,6 +16,8 @@ Il primo software che, secondo test interni, è pronto per gemini live
 
 Il primo prodotto free software ad avere un Asset free software.
 
+Il primo progetto nel mondo in maui ad essere compilato con le github actions.
+
 ![Napoli-Logo](https://github.com/user-attachments/assets/8163c808-62d3-40d3-bce3-0957e57bc26a)
 ![made in parco grifeo](https://github.com/user-attachments/assets/fadbf046-aeae-4f11-bda4-eb332c701d56)
 
