@@ -37,7 +37,7 @@ public partial class OpzioniPage : ContentPage
         try
         {
             s=FileSystem.OpenAppPackageFileAsync("Mazzi\\Gatti\\0.png").Result;
-            pkrmazzi.Add("Gatti");
+            pkrmazzi.Items.Add("Gatti");
             s.Close();
         }
         catch (AggregateException ex)
@@ -56,7 +56,7 @@ public partial class OpzioniPage : ContentPage
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Siciliano\\0.png").Result;
-            pkrmazzi.Add("Siciliano");
+            pkrmazzi.Items.Add("Siciliano");
             s.Close();
         }
         catch (AggregateException ex)
@@ -74,7 +74,7 @@ public partial class OpzioniPage : ContentPage
         try
         {
             s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Trevigiano\\0.png").Result;
-            pkrmazzi.Add("Trevigiano");
+            pkrmazzi.Items.Add("Trevigiano");
             s.Close();
         }
         catch (AggregateException ex)
