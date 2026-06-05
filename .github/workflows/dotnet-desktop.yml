@@ -53,6 +53,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX
-        path: TrumpSuitGame/AppPackages/TrumpSuitGame_3.9.6.0_Test
+        path: TrumpSuitGame/AppPackages/TrumpSuitGame_3.9.8.0_Test
         include-hidden-files: true
         if-no-files-found: error
