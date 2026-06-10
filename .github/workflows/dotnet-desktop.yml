@@ -12,22 +12,23 @@ jobs:
     strategy:
       matrix:
         configuration: [Release]
-
     env:
-      Solution_Name: TrumpSuitGame.slnx
+      Solution_Name: TrumpSuitGame #use this even on wor 57
       Configuration: ${{ matrix.configuration }}
-
+      Architecture: win-x64
+      Framework: net11.0-windows10.0.26100.0
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 10.0.x
-
+        dotnet-version: 11.0.x
+        dotnet-quality: 'preview'
+        
     - name: Import PFX certificate
       run: |
         $pfx_password = ConvertTo-SecureString "${{ secrets.PFX_KEY }}" -AsPlainText -Force
@@ -42,17 +43,17 @@ jobs:
       run: dotnet workload install maui
 
     - name: Restore packages
-      run: dotnet restore TrumpSuitGame.slnx -r win-arm64
+      run: dotnet restore {{ env:Solution_Name }}.slnx -r $env:Architecture
 
     - name: Build MAUI MSIX
       run: |
-        dotnet publish TrumpSuitGame/TrumpSuitGame.csproj -f net10.0-windows10.0.26100.0 -c $env:Configuration -r win-arm64
+        dotnet publish ${{ env.Solution_Name }}/${{ env.Solution_Name }}.csproj -f $env:Framework -c $env:Configuration -r $env:Architecture
       shell: pwsh
 
     - name: Upload MSIX artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: MSIX
-        path: TrumpSuitGame/AppPackages/TrumpSuitGame_3.9.8.0_Test
+        path: TrumpSuitGame/AppPackages/
         include-hidden-files: true
         if-no-files-found: error
