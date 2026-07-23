@@ -57,10 +57,9 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiAsset Include="Mazzi\\Gatti\\**" AssetPack="Gatti" Delivery="OnDomand" />
-	  <MauiAsset Include="Mazzi\\Siciliano\\**" AssetPack="Siciliano" Delivery="OnDomand" />
- 	  <MauiAsset Include="Mazzi\\Trevigiano\\**" AssetPack="Trevigiano" Delivery="OnDomand" />
-
+	  <MauiAsset Include="Resources\\Raw\\Mazzi\\Gatti\\**" AssetPack="Gatti" DeliveryType="InstallTime" />
+	  <MauiAsset Include="Resources\\Raw\\Mazzi\\Siciliano\\**" AssetPack="Siciliano" DeliveryType="InstallTime" />
+ 	  <MauiAsset Include="Resources\\Raw\\Mazzi\\Trevigiano\\**" AssetPack="Trevigiano" DeliveryType="InstallTime" />
 	</ItemGroup>
 
 	<ItemGroup>

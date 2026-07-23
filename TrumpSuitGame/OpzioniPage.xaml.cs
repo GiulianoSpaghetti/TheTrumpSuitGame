@@ -37,7 +37,7 @@ public partial class OpzioniPage : ContentPage
         ObservableCollection<string> _mazzi = new ObservableCollection<string>();
         try
         {
-            s=FileSystem.OpenAppPackageFileAsync("Mazzi\\Gatti\\0.png").Result;
+            s=FileSystem.OpenAppPackageFileAsync("Resources\\Raw\\Mazzi\\Gatti\\0.png").Result;
             _mazzi.Add("Gatti");
             s.Close();
         }
@@ -54,7 +54,7 @@ public partial class OpzioniPage : ContentPage
         _mazzi.Add("Napoletano");
         try
         {
-            s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Siciliano\\0.png").Result;
+            s = FileSystem.OpenAppPackageFileAsync("Resources\\Raw\\Mazzi\\Siciliano\\0.png").Result;
             _mazzi.Add("Siciliano");
             s.Close();
         }
@@ -70,7 +70,7 @@ public partial class OpzioniPage : ContentPage
         }
         try
         {
-            s = FileSystem.OpenAppPackageFileAsync("Mazzi\\Trevigiano\\0.png").Result;
+            s = FileSystem.OpenAppPackageFileAsync("Resources\\Raw\\Mazzi\\Trevigiano\\0.png").Result;
             _mazzi.Add("Trevigiano");
             s.Close();
         }
